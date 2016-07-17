@@ -1,0 +1,7 @@
+option optimize_for = SPEED;
+
+message LogInfo
+{
+    required int32 pri = 1;     
+    required string log_str = 2;       
+}

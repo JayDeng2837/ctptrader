@@ -1,0 +1,1 @@
+b2 --build-type=complete toolset=msvc-12.0 link=static runtime-link=shared --debug-configuration threading=multi debug release address-model=32

@@ -1,0 +1,49 @@
+option optimize_for = SPEED;
+
+message MarketDataMsg
+{
+
+    required string symbol = 1 [default = ""];
+
+    required string TradingDay = 2 [default = ""];  
+    required string UpdateTime = 3 [default = ""];  	  
+    required int32 UpdateMillisec = 4 [default = 0];    
+    
+	required double LastPrice = 5 [default = 0]; 
+	
+    required double OpenInterest = 6 [default = 0];      
+    required int32 deltaOpenInsterest = 7 [default = 0];    
+	   
+    required double UpperLimitPrice = 8 [default = 0];       
+    required double LowerLimitPrice = 9 [default = 0];  
+	     
+    required int32 Volume = 10 [default = 0];       
+    required int32  accVolume = 11 [default = 0];       
+
+    required double Turnover = 12 [default = 0];       
+    required double accTurnover = 13 [default = 0];    
+	   
+    required double AskPrice = 14 [default = 0];   
+    required int32 AskVolume = 15 [default = 0];   
+    required double BidPrice = 16 [default = 0];   
+    required int32 BidVolume = 17 [default = 0];   
+    required double AvgPriceInTick = 18 [default = 0];   
+    
+	required double PreClosePrice = 19 [default = 0];     
+	required double PreSettlementPrice = 20 [default = 0];     
+	required double PreOpenInterest = 21 [default = 0]; 
+
+	required double AveragePrice = 22 [default = 0]; 
+	
+}
+
+message InstrumentInfo
+{
+	required string Symbol = 1 [default = ""];
+	required double PriceTick = 2 [default = 1];
+}
+
+message InstrumentList
+{
+	repeated InstrumentInfo lst = 1;
+}
