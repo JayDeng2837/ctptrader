@@ -1,9 +1,10 @@
 Development
 =================
 
-ctptrader开发环境的搭建。
+STEPS to create the ctptrader developping environment.
 
 .. toctree::
 	:maxdepth: 2
 
-	PreInstallation <preinstallation>
+	Pre-Development <pre-development>
+    Update Third-party Libraries <update-libs>

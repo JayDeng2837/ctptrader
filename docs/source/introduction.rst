@@ -2,4 +2,4 @@
 Introduction
 =====================================
 
-基于ctp api的程序化交易系统平台。
+    A auto-trading system based on CTP API.
