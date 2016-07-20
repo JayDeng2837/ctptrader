@@ -10,15 +10,6 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
-leochan's project "ctptrader"
-
+   Introduction <introduction>
+   Development <development>
+   Architecture <architecture>
