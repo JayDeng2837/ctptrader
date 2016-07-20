@@ -17,6 +17,8 @@ Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`leochan`
-* :ref:`wangwenqi`
+* :ref:`modindex`
+* :ref:`search`
+
+leochan's project "ctptrader"
 
