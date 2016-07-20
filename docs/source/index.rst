@@ -6,10 +6,9 @@
 Welcome to ctptrader's documentation!
 =====================================
 
-Contents:
-
 .. toctree::
    :maxdepth: 2
+   
    Introduction <introduction>
    Development <development>
    Architecture <architecture>
