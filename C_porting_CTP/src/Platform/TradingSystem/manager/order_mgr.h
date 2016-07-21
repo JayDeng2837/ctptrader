@@ -70,9 +70,9 @@ private:
 
 #ifdef LOCK_FREE_OMS
 
-	typedef boost::unordered_map<LCLONGLONG, LocalKey>::iterator SIGNAL_ITOR;
+	typedef boost::unordered_map<LCLONGLONG, LocalKey>::iterator SIGNAL_ORDER_ITOR;
 
-	typedef boost::unordered_map<std::string, LCLONGLONG>::iterator SIGNAL_ITOR2;
+	typedef boost::unordered_map<std::string, LCLONGLONG>::iterator ORDER_SIGNAL_ITOR;
 
 	typedef boost::unordered_map<std::string, CThostFtdcOrderFieldEx *>::iterator ORDER_ITOR;
 
@@ -80,9 +80,9 @@ private:
 
 	typedef boost::unordered_map<std::string, std::list<CThostFtdcTradeField *> >::iterator TRADE_ITOR;
 
-	boost::unordered_map<LCLONGLONG, LocalKey> signalCenter;
+	boost::unordered_map<LCLONGLONG, LocalKey> pSignal_orderId_Map;
 
-	boost::unordered_map<std::string, LCLONGLONG> signalCenter2;
+	boost::unordered_map<std::string, LCLONGLONG> orderId_pSignal_Map;
 
 	boost::unordered_map<std::string, CThostFtdcOrderFieldEx *> orderCenter;
 
@@ -92,17 +92,17 @@ private:
 	
 #else
 
-	typedef tbb::concurrent_unordered_map<LCLONGLONG, LocalKey>::iterator SIGNAL_ITOR;
+	typedef tbb::concurrent_unordered_map<LCLONGLONG, LocalKey>::iterator SIGNAL_ORDER_ITOR;
 
-	typedef tbb::concurrent_unordered_map<std::string, LCLONGLONG>::iterator SIGNAL_ITOR2;
+	typedef tbb::concurrent_unordered_map<std::string, LCLONGLONG>::iterator ORDER_SIGNAL_ITOR;
 
 	typedef tbb::concurrent_unordered_map<std::string, CThostFtdcOrderFieldEx *>::iterator ORDER_ITOR;
 
 	typedef tbb::concurrent_unordered_map<std::string, std::list<CThostFtdcTradeField *> >::iterator TRADE_ITOR;
 
-	tbb::concurrent_unordered_map<LCLONGLONG, LocalKey> signalCenter;
+	tbb::concurrent_unordered_map<LCLONGLONG, LocalKey> pSignal_orderId_Map;
 
-	tbb::concurrent_unordered_map<std::string, LCLONGLONG> signalCenter2;
+	tbb::concurrent_unordered_map<std::string, LCLONGLONG> orderId_pSignal_Map;
 
 	tbb::concurrent_unordered_map<std::string, CThostFtdcOrderFieldEx *> orderCenter;
 

@@ -92,8 +92,8 @@ void OrderMgr::OMS_OnRtnOrder(CThostFtdcOrderFieldEx * pOrderTemp)
 void OrderMgr::refreshSignal(CThostFtdcOrderField * pOrder, const std::string & key)
 {
 
-	SIGNAL_ITOR2 itor2 = signalCenter2.find(key);
-	if (itor2 != signalCenter2.end())
+	ORDER_SIGNAL_ITOR itor2 = orderId_pSignal_Map.find(key);
+	if (itor2 != orderId_pSignal_Map.end())
 	{
 		Signal * s = (Signal *)itor2->second;
 		if (s)
@@ -231,8 +231,8 @@ void OrderMgr::OMS_OrderInsert(LCLONGLONG pSignal_Addr, string local_orderid, in
 	key.localOrderId = local_orderid;
 	key.orderRef = orderRef;
 
-	signalCenter[pSignal_Addr] = key;
-	signalCenter2[local_orderid] = pSignal_Addr;
+	pSignal_orderId_Map[pSignal_Addr] = key;
+	orderId_pSignal_Map[local_orderid] = pSignal_Addr;
 }
 
 bool OrderMgr::OMS_InputOrderAction(LCLONGLONG pSignal_ptr, std::string & localOrderId, int & orderRef)
@@ -242,8 +242,8 @@ bool OrderMgr::OMS_InputOrderAction(LCLONGLONG pSignal_ptr, std::string & localO
 	lc_scoped_lock _lock(oms_Mutex);
 #endif // LOCK_FREE_OMS
 
-	SIGNAL_ITOR itor = signalCenter.find(pSignal_ptr); //get local_orderid
-	if (itor != signalCenter.end())
+	SIGNAL_ORDER_ITOR itor = pSignal_orderId_Map.find(pSignal_ptr); //get local_orderid
+	if (itor != pSignal_orderId_Map.end())
 	{
 		localOrderId = itor->second.localOrderId;
 		orderRef = itor->second.orderRef;
@@ -261,13 +261,13 @@ void OrderMgr::WriteToDisk(const std::string & path)
 	{
 		fout.open(path, ios::trunc);
 
-		SIGNAL_ITOR itor = signalCenter.begin();
+		SIGNAL_ORDER_ITOR itor = pSignal_orderId_Map.begin();
 
 		fout << "InstrumentID, price, qty, order_type, direction, orderTime, orderRtnTime, currentMicroSec_in_queue, "
 			"currentMicroSec, deltaT_in_queue, orderRtnMicroSec,"
 			" deltaT, SystemID, tradeInfo, StrategyName" << endl;
 
-		for (; itor != signalCenter.end(); itor++)
+		for (; itor != pSignal_orderId_Map.end(); itor++)
 		{
 			Signal * s = (Signal *)itor->first;
 
