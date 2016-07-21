@@ -2,4 +2,4 @@
 Architecture
 =====================================
 
-ctptrader的系统架构。
+ctptrader's architecture.
